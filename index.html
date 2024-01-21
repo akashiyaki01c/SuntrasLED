@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="lib/led.css">
+	<style>
+		main {
+			font-size: 0;
+		}
+	</style>
+</head>
+<body>
+	<main data-lang="ja">
+		<div id="type3"></div>
+		<div id="hour"></div>
+		<div id="colon"></div>
+		<div id="minute"></div>
+		<div id="dest"></div>
+	</main>
+	<form>
+		<select name="type3" id="type3-select"></select>
+		<select name="hour" id="hour-select"></select>
+		<select name="colon" id="colon-select"></select>
+		<select name="minute" id="minute-select"></select>
+		<select name="dest" id="dest-select"></select>
+	</form>
+
+	<script src="lib/led.js"></script>
+	<script src="data/data.js"></script>
+	<script type="module">
+		const leds = [
+			await initLed("type3", 3),
+			await initLed("hour", 1),
+			await initLed("colon", 1),
+			await initLed("minute", 1),
+			await initLed("dest", 4),
+		];
+		setInterval(() => {
+			for (const led of leds) {
+				led.changeLang()
+			}
+		}, 5000);
+	</script>
+</body>
+</html>
